@@ -18,9 +18,15 @@ read our deployment detail at [here](https://script.google.com/macros/library/d/
 ```
 
 ## Example
-the example when it applied in side server
+init project
+```
+    const _id = "5400366567371891262"; // blog Id Obtain from blogger dashboard
+    const _key = "Api_key";  // google API console credential see (https://console.cloud.google.com/apis/credentials) 
+    var blog = new BloggerLib.Blog(_id,_key);
 
-*``soooon......!``* **(b ᵔ▽ᵔ)b**
+```
+the full example when it applied in side server can be seen [here](https://github.com/GoruAkiba/gas-blogger-lib/blob/master/example/RSS%20Blogger%20Side%20Server/Kode.gs) 
+
 ## Contributing
 
 - [Fork it!](https://github.com/GoruAkiba/gas-blogger-lib/fork)
