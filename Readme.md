@@ -12,7 +12,7 @@ uwuuuuu (✧ω✧) 	☆ ～('▽^人) ヽ(*⌒▽⌒*)ﾉ
 
 ## Deployment
 
-read our deployment detail at [here]("https://script.google.com/macros/library/d/1CAJXhNUfgO918tIfHekp48Ywr8KqOE_ZcK5dvbIGctl57Z7iERBehH7C/2"). Also  if you want to use our library you can adding using this project id:
+read our deployment detail at [here](https://script.google.com/macros/library/d/1CAJXhNUfgO918tIfHekp48Ywr8KqOE_ZcK5dvbIGctl57Z7iERBehH7C/2). Also  if you want to use our library you can adding using this project id:
 ```
 1CAJXhNUfgO918tIfHekp48Ywr8KqOE_ZcK5dvbIGctl57Z7iERBehH7C
 ```
