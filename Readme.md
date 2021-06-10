@@ -5,7 +5,7 @@ GAS Blogger Lib
 > [GB_Sources](https://github.com/GoruAkiba)
 
 google Appsscript public Blogger Api library.
-eases user to access blogger compoent like posts, pages, comments
+eases user to access blogger component like posts, pages, comments
 make it possible to create RSS in json version.
 
 uwuuuuu (✧ω✧) 	☆ ～('▽^人) ヽ(*⌒▽⌒*)ﾉ

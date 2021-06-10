@@ -54,7 +54,7 @@ var Blog = function(_id,_key) {
   
   /**
    * getPages method
-   * id string  id of item
+   * @param {string} id id of item
    */
   this.getPages = function(id){
     var resApi = this.gate + `/pages${id?"/"+id:""}`;
