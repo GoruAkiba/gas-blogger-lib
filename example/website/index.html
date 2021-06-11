@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <title>
+            example index post by Label
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- bootstrap -->
+        <link href="asset/css/bootstrap.min.css" rel="stylesheet">
+        <script src="asset/js/bootstrap.bundle.min.js"></script>
+
+        <!-- jquery -->
+        <script src="asset/js/jquery-3.3.1.min.js"></script>
+
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <!-- 
+                    ====== Provide base element to control ======
+                    patern:
+                    <div class="blog-lib" data="name-of-label-we-works"></div>
+
+                    basically we works in "blog-lib" class, and read "data" attribute as selected label that we gonna render.
+                
+                -->
+                <div class="col-md-3 blog-lib" data="News">
+                </div>
+
+                <div class="col-md-3 blog-lib" data="Annoucements">
+                </div>
+
+                <div class="col-md-3 blog-lib" data="Publications">
+                </div>
+                
+            </div>
+            <script>
+                // Side server (Appsscript web app url) 
+                var base_serv = "https://script.google.com/macros/s/AKfycby_ieCMCLP1DVbg5LHVKzkphfuxZR8B8P5y8GOtyiH1KKZ4vjUmZZAh3fzt3rBDuGq3/exec";
+                
+                // side serber url with request method
+                var req_server = base_serv+"?m=getPosts&id=";
+
+                // fetch request to side server
+                fetch(req_server)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.items){
+                        // get all post from response and sort in label as map
+                        var colPosts = labelSort(data.items);
+                        console.log(colPosts);
+                        
+                        // for each blog-lib class do something
+                        $(".blog-lib").each( (i,e) => {
+                            // get value of data attribute
+                            var searchLabel = e.getAttribute("data");
+                            var colEntry = "";
+
+                            // if post match with certain label do something
+                            if(colPosts.has(searchLabel)){
+                                var posts = colPosts.get(searchLabel); 
+
+                                // collect all match post
+                                posts.forEach( post => {
+                                    colEntry += `
+                                    <div class="bg-light p-1 m-1 rounded">
+                                        <a href="${post.url}"><strong>${post.title}</strong></a><br>
+                                        <span style="font-size:11px"><em>${new Date(post.published).toLocaleDateString()} | ${post.author.displayName}</em></span>
+                                    </div> 
+                                        `
+                                });
+                            }
+
+                            // render all match label with or without post 
+                            e.innerHTML = `
+                                <h3 style="text-decoration:underline">${searchLabel}</h3>
+                                ${colEntry? colEntry : '<span style="font-size:11px">no post yet</span>'}`;
+                        })
+                    } else {
+                        console.log("cant find any item! please check provide side server url")
+                    }
+                });
+
+                /**
+                 * function of Basic sort in label as Map()
+                 * @param {array} data array of post items
+                 * @return {object} map of post in each of label 
+                 */              
+                function labelSort(data){
+                    var collection = new Map();
+                    data.map(e => {
+                        var labels = e.labels;
+                        if(labels && labels.length){
+                            labels.map(c => {
+                                if (collection.has(c)){
+                                    collection.get(c).push(e);
+                                }else{
+                                    var newCol = collection.set(c,[]);
+                                    newCol.get(c).push(e);
+                                }
+                            });
+                        } else {
+                            var c = "other";
+                            if (collection.has(c)){
+                                collection.get(c).push(e);
+                            }else{
+                                var newCol = collection.set(c,[]);
+                                newCol.get(c).push(e);
+                            }
+                        }
+                        
+                    });
+                    return collection;
+                }
+
+            </script>
+        </div>        
+
+    </body>
+</html>
