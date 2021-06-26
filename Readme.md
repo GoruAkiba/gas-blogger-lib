@@ -27,6 +27,10 @@ follow this code to init the project:
 ```
 for the full example when it applied in side server can be seen [here](https://github.com/GoruAkiba/gas-blogger-lib/blob/master/example/RSS%20Blogger%20Side%20Server/Kode.gs) 
 
+**Applied as sideserver and build frontend widget**
+- Example when build in plain Html and Javascript, [here](https://github.com/GoruAkiba/gas-blogger-lib/blob/master/example/website/index.html)
+- Example when build in [Vue.js](https://vuejs.org/) application, [here](https://github.com/GoruAkiba/gas-blogger-lib/blob/master/example/website/index.vue.html)
+
 ## Contributing
 
 - [Fork it!](https://github.com/GoruAkiba/gas-blogger-lib/fork)
